@@ -3,7 +3,7 @@ A = int(A)
 B = int(B)
 whitecount = 0
 blackcount = 0
-comparison = []
+comparison = 0
 array = [list(map(str, input())) for row in range(A)]
 for rowrange in range(0, B-7) :
         for colrange in range(0, A-7): 
@@ -18,10 +18,13 @@ for rowrange in range(0, B-7) :
                         blackcount+=1
                     if array[colcount][rowcount]=='B' and (colcount+rowcount)%2==1 :
                         blackcount+=1  
-            comparison.append(whitecount)
-            whitecount=0  
-            comparison.append(blackcount)
+            if colrange == 0 and rowrange == 0 and blackcount >= whitecount :
+                comparison = whitecount
+            if colrange == 0 and rowrange == 0 and blackcount <= whitecount :
+                comparison = blackcount
+            if comparison >= whitecount : comparison = whitecount
+            if comparison >= blackcount : comparison = blackcount
             blackcount = 0
-comparison.sort()
-print(comparison[0])
+            whitecount = 0
 
+print(comparison)
