@@ -18,7 +18,7 @@ while(gap <= total):
     median = math.trunc((gap + total) / 2)
     count = 1
     start = H[0]
-    for i in range(1, len(H)):
+    for i in range(1, Hnum):
         if H[i] >= start + median:
             start = H[i]
             count += 1
